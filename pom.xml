@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mulesoft.training</groupId>
-	<artifactId>maven-project</artifactId>
+	<artifactId>maven-project-jms-raju</artifactId>
 	<version>1.0.0</version>
 	<packaging>mule</packaging>
 	<name>Mule maven-project Application</name>
@@ -17,10 +17,36 @@
 
 		<!-- more properties here -->
 		<derby.version>10.12.1.1</derby.version>
+		<uid>srinivasaraju04</uid>
+		<pwd>HEMUash1#</pwd>
+
 	</properties>
 
 	<build>
 		<plugins>
+			<plugin>
+<groupId>org.mule.tools.maven</groupId>
+<artifactId>mule-maven-plugin</artifactId>
+<version>2.0</version>
+<configuration>
+<deploymentType>cloudhub</deploymentType>
+<muleVersion>${mule.version}</muleVersion>
+<username>${uid}</username>
+<password>${pwd}</password>
+<workerType>Micro</workerType>
+<redeploy>true</redeploy>
+<environment>Sandbox</environment>
+</configuration>
+<executions>
+<execution>
+<id>deploy</id>
+<phase>deploy</phase>
+<goals>
+<goal>deploy</goal>
+</goals>
+</execution>
+</executions>
+</plugin>
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-app-maven-plugin</artifactId>
